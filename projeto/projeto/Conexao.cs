@@ -1,50 +1,64 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;//biblioteca do mysql
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 
 namespace projeto
 {
     public class Conexao
     {
-                                           //127.0.0.0.1
-        static private string servidor = "localhost";
-        static private string bd = "projeto";
-        static private string usuario = "root";
-        static private string senha = "";
+        //variaveis de conexao com o banco de dados
+        static private string servidor = "localhost";//nome
+        static private string bd = "projeto";//nome do banco
+        static private string usuario = "root";//administrador do banco
+        static private string senha = "";//senha do mysql
         public MySqlConnection conn = null;
-        static private string strcon = "server=" + servidor + 
-            ";database=" + bd + ";user id=" + usuario +
-            ";password=" + senha; 
-        public MySqlConnection getconexao()
-        {    
-            conn = new MySqlConnection(strcon);
+        static private string StrConn = "server="+ servidor+";database="+
+            bd+";user id="+usuario+";senha="+senha;
+       //metodo de conectar o c# com o Mysql
+        public MySqlConnection getConexao()
+        {
+            conn= new MySqlConnection(StrConn);
             return conn;
         }
         public int cadastrar(string nome,string email,string senha)
-        { //declaro o rgistro do cadastro
-            int registro = 0;
+        {
+            int cadastro = 0;
             try
             {
-                //pego a conexao
-                conn = getconexao();
-                conn.Open();//abro a conexao
-                string Sql = "insert into usuario(nome,email,senha) values" +
-                    " ('"+nome+"','"+email+"','"+senha+"')";
-                //monta o script sql
-                MySqlCommand cmd = new MySqlCommand(Sql, conn);
-                //executa a instrução
-                registro= cmd.ExecuteNonQuery();
+                conn = getConexao();//pegar a conexao
+                conn.Open();//abre o banco
+                //prepara o sql
+                string sql = "insert into usuario(nome,email,senha)" +
+                    "values('" + nome + "','" + email + "','" + senha + "')";
+                //prepara o comando para execução
+                MySqlCommand cmd=new MySqlCommand(sql, conn);
+               //executo o comando sql
+                cadastro= cmd.ExecuteNonQuery();
                 conn.Close();
-            }catch(Exception ex)
+            }catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Erro:"+ex.Message);
+
             }
-            
-            return registro;
+
+            return cadastro;
+        }
+        public DataTable obterdados(string sql)
+        {
+            //cria a tabela de dados
+            DataTable dt = new DataTable();
+            conn=getConexao();//obtenho a conexao
+            conn.Open();//abro a conexao
+            //prepara o script sql
+            MySqlCommand cmd= new MySqlCommand(sql, conn);
+            //executa as informações na tabela
+            MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+            adapter.Fill(dt);//monta a tabela com as informações
+            return dt;//devolve a tabela
         }
     }
 }

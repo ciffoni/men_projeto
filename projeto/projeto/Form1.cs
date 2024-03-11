@@ -1,4 +1,3 @@
-
 namespace projeto
 {
     public partial class Form1 : Form
@@ -8,40 +7,47 @@ namespace projeto
             InitializeComponent();
         }
 
-        private void btnConexao_Click(object sender, EventArgs e)
-        {
-            //chamo a classe
-            Conexao conexao = new Conexao();
-            //testo a conexao
-            if (conexao.getconexao() == null)
-            {
-                MessageBox.Show("Nao conectou ao BD");
+        private void btnConectar_Click(object sender, EventArgs e)
+        {//tratamento de erro
+            try
+            {//chamo a classe  conexao
+                Conexao com = new Conexao();
+                if (com.getConexao() == null)
+                {
+                    MessageBox.Show("Erro ao conectar!");
+                }
+                else
+                {
+                    MessageBox.Show("Conectado com sucesso!");
+                }
+                //qual erro gerou
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Conexão OK");
+                MessageBox.Show("Erro:" + ex.Message);
+
             }
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
-        {
-            try
+        {//chama a classe
+            Conexao conexao = new Conexao();
+            //verificar se executa o insert 
+            if (conexao.cadastrar(txtNome.Text, txtEmail.Text, txtSenha.Text) >= 1)
             {
-                Conexao conex= new Conexao();
-                if (conex.cadastrar(txtNome.Text, txtEmail.Text, txtSenha.Text) > 0)
-                {
-                    MessageBox.Show("cadasrto com suceso");
-                }
-                else
-                {
-                    MessageBox.Show("erro no cadastro");
-                }
-                
-            }catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
+                MessageBox.Show("Cadastro com sucesso!");
             }
+            else
+            {
+                MessageBox.Show("Erro no cadastro!");
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Conexao con= new Conexao(); 
+            dataGridUsuario.DataSource=con.obterdados("select * from usuario");
+
         }
     }
 }
