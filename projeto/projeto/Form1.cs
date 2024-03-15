@@ -45,9 +45,16 @@ namespace projeto
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Conexao con= new Conexao(); 
-            dataGridUsuario.DataSource=con.obterdados("select * from usuario");
+            Conexao con = new Conexao();
+            dataGridUsuario.DataSource = con.obterdados("select * from usuario");
 
+        }
+
+        private void dataGridUsuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int codigo = Convert.ToInt32(dataGridUsuario.Rows[e.RowIndex].Cells[e.ColumnIndex].Value); 
+            label1.Text = codigo.ToString();
+            txtNome.Text = dataGridUsuario.Rows[e.RowIndex].Cells["nome"].Value.ToString();
         }
     }
 }

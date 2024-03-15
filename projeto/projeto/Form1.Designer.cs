@@ -121,10 +121,11 @@
             // dataGridUsuario
             // 
             dataGridUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridUsuario.Location = new Point(345, 91);
+            dataGridUsuario.Location = new Point(291, 71);
             dataGridUsuario.Name = "dataGridUsuario";
             dataGridUsuario.Size = new Size(240, 150);
             dataGridUsuario.TabIndex = 9;
+            dataGridUsuario.CellContentClick += dataGridUsuario_CellContentClick;
             // 
             // Form1
             // 
@@ -142,7 +143,7 @@
             Controls.Add(btnCadastrar);
             Controls.Add(btnConectar);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Cadastro do usuário";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridUsuario).EndInit();
             ResumeLayout(false);
