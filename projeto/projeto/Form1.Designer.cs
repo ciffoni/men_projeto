@@ -38,6 +38,10 @@
             txtEmail = new TextBox();
             txtSenha = new TextBox();
             dataGridUsuario = new DataGridView();
+            btnEditar = new Button();
+            btnExcluir = new Button();
+            comboBox1 = new ComboBox();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuario).BeginInit();
             SuspendLayout();
             // 
@@ -127,11 +131,52 @@
             dataGridUsuario.TabIndex = 9;
             dataGridUsuario.CellContentClick += dataGridUsuario_CellContentClick;
             // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(174, 282);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(75, 23);
+            btnEditar.TabIndex = 10;
+            btnEditar.Text = "Alterar";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.Location = new Point(277, 285);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(75, 23);
+            btnExcluir.TabIndex = 11;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(130, 157);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 12;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(73, 158);
+            label5.Name = "label5";
+            label5.Size = new Size(37, 15);
+            label5.TabIndex = 13;
+            label5.Text = "Perfil:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(568, 450);
+            Controls.Add(label5);
+            Controls.Add(comboBox1);
+            Controls.Add(btnExcluir);
+            Controls.Add(btnEditar);
             Controls.Add(dataGridUsuario);
             Controls.Add(txtSenha);
             Controls.Add(txtEmail);
@@ -162,5 +207,9 @@
         private TextBox txtEmail;
         private TextBox txtSenha;
         private DataGridView dataGridUsuario;
+        private Button btnEditar;
+        private Button btnExcluir;
+        private ComboBox comboBox1;
+        private Label label5;
     }
 }
