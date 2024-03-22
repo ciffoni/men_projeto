@@ -47,9 +47,10 @@
             // 
             // btnConectar
             // 
-            btnConectar.Location = new Point(68, 360);
+            btnConectar.Location = new Point(78, 480);
+            btnConectar.Margin = new Padding(3, 4, 3, 4);
             btnConectar.Name = "btnConectar";
-            btnConectar.Size = new Size(75, 23);
+            btnConectar.Size = new Size(86, 31);
             btnConectar.TabIndex = 0;
             btnConectar.Text = "Conexão";
             btnConectar.UseVisualStyleBackColor = true;
@@ -57,9 +58,10 @@
             // 
             // btnCadastrar
             // 
-            btnCadastrar.Location = new Point(68, 282);
+            btnCadastrar.Location = new Point(78, 376);
+            btnCadastrar.Margin = new Padding(3, 4, 3, 4);
             btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(75, 23);
+            btnCadastrar.Size = new Size(86, 31);
             btnCadastrar.TabIndex = 1;
             btnCadastrar.Text = "Cadastrar";
             btnCadastrar.UseVisualStyleBackColor = true;
@@ -68,74 +70,80 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(81, 26);
+            label1.Location = new Point(93, 35);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(50, 20);
             label1.TabIndex = 2;
             label1.Text = "label1";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(75, 60);
+            label2.Location = new Point(86, 80);
             label2.Name = "label2";
-            label2.Size = new Size(43, 15);
+            label2.Size = new Size(53, 20);
             label2.TabIndex = 3;
             label2.Text = "Nome:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(75, 91);
+            label3.Location = new Point(86, 121);
             label3.Name = "label3";
-            label3.Size = new Size(44, 15);
+            label3.Size = new Size(55, 20);
             label3.TabIndex = 4;
             label3.Text = "e-mail:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(75, 115);
+            label4.Location = new Point(86, 153);
             label4.Name = "label4";
-            label4.Size = new Size(41, 15);
+            label4.Size = new Size(50, 20);
             label4.TabIndex = 5;
             label4.Text = "senha:";
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(130, 57);
+            txtNome.Location = new Point(149, 76);
+            txtNome.Margin = new Padding(3, 4, 3, 4);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(100, 23);
+            txtNome.Size = new Size(114, 27);
             txtNome.TabIndex = 6;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(130, 83);
+            txtEmail.Location = new Point(149, 111);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(100, 23);
+            txtEmail.Size = new Size(114, 27);
             txtEmail.TabIndex = 7;
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(129, 112);
+            txtSenha.Location = new Point(147, 149);
+            txtSenha.Margin = new Padding(3, 4, 3, 4);
             txtSenha.Name = "txtSenha";
-            txtSenha.Size = new Size(100, 23);
+            txtSenha.Size = new Size(114, 27);
             txtSenha.TabIndex = 8;
             // 
             // dataGridUsuario
             // 
             dataGridUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridUsuario.Location = new Point(291, 71);
+            dataGridUsuario.Location = new Point(333, 95);
+            dataGridUsuario.Margin = new Padding(3, 4, 3, 4);
             dataGridUsuario.Name = "dataGridUsuario";
-            dataGridUsuario.Size = new Size(240, 150);
+            dataGridUsuario.RowHeadersWidth = 51;
+            dataGridUsuario.Size = new Size(274, 200);
             dataGridUsuario.TabIndex = 9;
             dataGridUsuario.CellContentClick += dataGridUsuario_CellContentClick;
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(174, 282);
+            btnEditar.Location = new Point(199, 376);
+            btnEditar.Margin = new Padding(3, 4, 3, 4);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
+            btnEditar.Size = new Size(86, 31);
             btnEditar.TabIndex = 10;
             btnEditar.Text = "Alterar";
             btnEditar.UseVisualStyleBackColor = true;
@@ -143,9 +151,10 @@
             // 
             // btnExcluir
             // 
-            btnExcluir.Location = new Point(277, 285);
+            btnExcluir.Location = new Point(317, 380);
+            btnExcluir.Margin = new Padding(3, 4, 3, 4);
             btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(75, 23);
+            btnExcluir.Size = new Size(86, 31);
             btnExcluir.TabIndex = 11;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = true;
@@ -154,25 +163,27 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(130, 157);
+            comboBox1.Location = new Point(149, 209);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
+            comboBox1.Size = new Size(138, 28);
             comboBox1.TabIndex = 12;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(73, 158);
+            label5.Location = new Point(83, 211);
             label5.Name = "label5";
-            label5.Size = new Size(37, 15);
+            label5.Size = new Size(45, 20);
             label5.TabIndex = 13;
             label5.Text = "Perfil:";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(568, 450);
+            ClientSize = new Size(649, 600);
             Controls.Add(label5);
             Controls.Add(comboBox1);
             Controls.Add(btnExcluir);
@@ -187,6 +198,7 @@
             Controls.Add(label1);
             Controls.Add(btnCadastrar);
             Controls.Add(btnConectar);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Cadastro do usuário";
             Load += Form1_Load;

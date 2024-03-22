@@ -24,7 +24,7 @@ namespace projeto
             conn= new MySqlConnection(StrConn);
             return conn;
         }
-        public int cadastrar(string nome,string email,string senha)
+        public int cadastrar(string nome,string email,string senha,int cargo)
         {
             int cadastro = 0;
             try
@@ -32,8 +32,8 @@ namespace projeto
                 conn = getConexao();//pegar a conexao
                 conn.Open();//abre o banco
                 //prepara o sql
-                string sql = "insert into usuario(nome,email,senha)" +
-                    "values('" + nome + "','" + email + "','" + senha + "')";
+                string sql = "insert into usuario(nome,email,senha,cod_cargo)" +
+                    "values('" + nome + "','" + email + "','" + senha + "',"+cargo+")";
                 //prepara o comando para execução
                 MySqlCommand cmd=new MySqlCommand(sql, conn);
                //executo o comando sql

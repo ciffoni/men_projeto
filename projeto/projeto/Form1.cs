@@ -1,12 +1,15 @@
+using System.Data;
 using System.Drawing;
 
 namespace projeto
 {
     public partial class Form1 : Form
     {
+        //chama a classe global
         Conexao com = new Conexao();
-      
+
         int codigo = 0;//deixa publico no formulario todo
+        int cargo = 0;//variavel publica para guardar o id do cargo
         public Form1()
         {
             InitializeComponent();
@@ -16,7 +19,7 @@ namespace projeto
         {//tratamento de erro
             try
             {//chamo a classe  conexao
-               
+
                 if (com.getConexao() == null)
                 {
                     MessageBox.Show("Erro ao conectar!");
@@ -38,7 +41,7 @@ namespace projeto
         {//chama a classe
             Conexao conexao = new Conexao();
             //verificar se executa o insert 
-            if (conexao.cadastrar(txtNome.Text, txtEmail.Text, txtSenha.Text) >= 1)
+            if (conexao.cadastrar(txtNome.Text, txtEmail.Text, txtSenha.Text,cargo) >= 1)
             {
                 MessageBox.Show("Cadastro com sucesso!");
                 dataGridUsuario.DataSource = com.obterdados("select * from usuario");
@@ -52,8 +55,9 @@ namespace projeto
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
-            dataGridUsuario.DataSource = com.obterdados("select * from usuario");
+
+            dataGridUsuario.DataSource = com.obterdados("select usuario.nome,usuario.email,usuario.senha,cargo.cargo from usuario" +
+                " inner join cargo on usuario.cod_cargo=cargo.cod_cargo");
             comboBox1.DataSource = com.obterdados("select * from cargo");
             comboBox1.DisplayMember = "cargo";
             comboBox1.ValueMember = "cod_cargo";
@@ -108,6 +112,11 @@ namespace projeto
             {
                 MessageBox.Show("Erro ao excluir");
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cargo = Convert.ToInt32(((DataRowView)comboBox1.SelectedItem)["cod_cargo"]);
         }
     }
 }
