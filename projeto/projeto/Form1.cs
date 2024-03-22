@@ -41,7 +41,7 @@ namespace projeto
         {//chama a classe
             Conexao conexao = new Conexao();
             //verificar se executa o insert 
-            if (conexao.cadastrar(txtNome.Text, txtEmail.Text, txtSenha.Text,cargo) >= 1)
+            if (conexao.cadastrar(txtNome.Text, txtEmail.Text, txtSenha.Text, cargo) >= 1)
             {
                 MessageBox.Show("Cadastro com sucesso!");
                 dataGridUsuario.DataSource = com.obterdados("select * from usuario");
@@ -56,7 +56,7 @@ namespace projeto
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            dataGridUsuario.DataSource = com.obterdados("select usuario.nome,usuario.email,usuario.senha,cargo.cargo from usuario" +
+            dataGridUsuario.DataSource = com.obterdados("select usuario.cod_usu, usuario.nome,usuario.email,usuario.senha,cargo.cargo from usuario" +
                 " inner join cargo on usuario.cod_cargo=cargo.cod_cargo");
             comboBox1.DataSource = com.obterdados("select * from cargo");
             comboBox1.DisplayMember = "cargo";
@@ -71,6 +71,7 @@ namespace projeto
             txtNome.Text = dataGridUsuario.Rows[e.RowIndex].Cells["nome"].Value.ToString();
             txtEmail.Text = dataGridUsuario.Rows[e.RowIndex].Cells["email"].Value.ToString();
             txtSenha.Text = dataGridUsuario.Rows[e.RowIndex].Cells["senha"].Value.ToString();
+            comboBox1.Text = dataGridUsuario.Rows[e.RowIndex].Cells["cargo"].Value.ToString();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace projeto
 
                 //chama a classe usuario
                 Class_usuario usu = new Class_usuario();
-                if (usu.alterar(txtEmail.Text, txtSenha.Text, txtNome.Text, codigo) > 0)
+                if (usu.alterar(txtEmail.Text, txtSenha.Text, txtNome.Text, codigo, cargo) > 0)
                 {
                     MessageBox.Show("Alterado com sucesso!");
                     dataGridUsuario.DataSource = com.obterdados("select * from usuario");
@@ -117,6 +118,28 @@ namespace projeto
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             cargo = Convert.ToInt32(((DataRowView)comboBox1.SelectedItem)["cod_cargo"]);
+        }
+        
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog foto= new OpenFileDialog();
+                foto.Filter = "Image file(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
+                if (foto.ShowDialog() == DialogResult.OK)
+                {
+                    Image arquivo=Image.FromFile(foto.FileName);
+                    pictureBox1.Image= arquivo;
+                    pictureBox1.SizeMode=PictureBoxSizeMode.StretchImage;
+                }
+                else
+                {
+                    MessageBox.Show("Não escolheu a foto!");
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Erro :" + ex.Message);
+            }
         }
     }
 }

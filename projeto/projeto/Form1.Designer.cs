@@ -42,12 +42,14 @@
             btnExcluir = new Button();
             comboBox1 = new ComboBox();
             label5 = new Label();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuario).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnConectar
             // 
-            btnConectar.Location = new Point(78, 480);
+            btnConectar.Location = new Point(212, 536);
             btnConectar.Margin = new Padding(3, 4, 3, 4);
             btnConectar.Name = "btnConectar";
             btnConectar.Size = new Size(86, 31);
@@ -58,7 +60,7 @@
             // 
             // btnCadastrar
             // 
-            btnCadastrar.Location = new Point(78, 376);
+            btnCadastrar.Location = new Point(212, 432);
             btnCadastrar.Margin = new Padding(3, 4, 3, 4);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(86, 31);
@@ -140,7 +142,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(199, 376);
+            btnEditar.Location = new Point(333, 432);
             btnEditar.Margin = new Padding(3, 4, 3, 4);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(86, 31);
@@ -151,7 +153,7 @@
             // 
             // btnExcluir
             // 
-            btnExcluir.Location = new Point(317, 380);
+            btnExcluir.Location = new Point(451, 436);
             btnExcluir.Margin = new Padding(3, 4, 3, 4);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(86, 31);
@@ -179,11 +181,23 @@
             label5.TabIndex = 13;
             label5.Text = "Perfil:";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.transferir;
+            pictureBox1.Location = new Point(54, 263);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(160, 123);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 14;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(649, 600);
+            Controls.Add(pictureBox1);
             Controls.Add(label5);
             Controls.Add(comboBox1);
             Controls.Add(btnExcluir);
@@ -203,6 +217,7 @@
             Text = "Cadastro do usuário";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridUsuario).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -223,5 +238,6 @@
         private Button btnExcluir;
         private ComboBox comboBox1;
         private Label label5;
+        private PictureBox pictureBox1;
     }
 }

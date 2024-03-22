@@ -38,11 +38,11 @@ namespace projeto
             }
             return dt;
         }
-        public int alterar(string email,string senha,string nome,int ID)
+        public int alterar(string email,string senha,string nome,int ID,int cargo)
         { //cria a variavel do codigo sql
             int registro = 0;
             //criei o comando SQL de atualizar
-            string sql = "update usuario set nome=@nome, email=@email, senha=@senha where cod_usu=@codigo";
+            string sql = "update usuario set nome=@nome, email=@email, senha=@senha,cod_cargo=@cargo where cod_usu=@codigo";
             //pegar a conexao
             MySqlConnection com=conexao.getConexao();
             com.Open();//abre o banco de dados
@@ -52,6 +52,7 @@ namespace projeto
             cmd.Parameters.AddWithValue("@nome", nome);
             cmd.Parameters.AddWithValue("@email", email);
             cmd.Parameters.AddWithValue("@senha", senha);
+            cmd.Parameters.AddWithValue("@cargo", cargo);
             cmd.Parameters.AddWithValue("@codigo", ID);
             //executar sua consulta para alterar todas as informaçõs
             registro = Convert.ToInt32(cmd.ExecuteNonQuery());
