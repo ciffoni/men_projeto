@@ -5,10 +5,13 @@ CREATE TABLE `usuario` (
   `nome` varchar(70) DEFAULT NULL,
   `email` varchar(70) DEFAULT NULL,
   `senha` varchar(46) DEFAULT NULL,
-  PRIMARY KEY (`cod_usu`)
+  cod_cargo int,
+  PRIMARY KEY (`cod_usu`),
+  foto varchar(120),
+  constraint fk_cargo foreign key (cod_cargo) references cargo(cod_cargo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-insert into usuario(nome,email,senha) values("jorge","ciffoni@gmail.com","aula123");
+insert into usuario(nome,email,senha) values("jorge","ciffoni@gmail.com","aula123",1);
 
 create table cargo(
 cod_cargo int auto_increment primary key,

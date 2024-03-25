@@ -10,6 +10,7 @@ namespace projeto
 
         int codigo = 0;//deixa publico no formulario todo
         int cargo = 0;//variavel publica para guardar o id do cargo
+        string caminhofoto = "";
         public Form1()
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace projeto
         {//chama a classe
             Conexao conexao = new Conexao();
             //verificar se executa o insert 
-            if (conexao.cadastrar(txtNome.Text, txtEmail.Text, txtSenha.Text, cargo) >= 1)
+            if (conexao.cadastrar(txtNome.Text, txtEmail.Text, txtSenha.Text, cargo,caminhofoto) >= 1)
             {
                 MessageBox.Show("Cadastro com sucesso!");
                 dataGridUsuario.DataSource = com.obterdados("select * from usuario");
@@ -56,7 +57,7 @@ namespace projeto
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            dataGridUsuario.DataSource = com.obterdados("select usuario.cod_usu, usuario.nome,usuario.email,usuario.senha,cargo.cargo from usuario" +
+            dataGridUsuario.DataSource = com.obterdados("select usuario.cod_usu, usuario.nome,usuario.email,usuario.senha,cargo.cargo,usuario.foto from usuario" +
                 " inner join cargo on usuario.cod_cargo=cargo.cod_cargo");
             comboBox1.DataSource = com.obterdados("select * from cargo");
             comboBox1.DisplayMember = "cargo";
@@ -72,6 +73,9 @@ namespace projeto
             txtEmail.Text = dataGridUsuario.Rows[e.RowIndex].Cells["email"].Value.ToString();
             txtSenha.Text = dataGridUsuario.Rows[e.RowIndex].Cells["senha"].Value.ToString();
             comboBox1.Text = dataGridUsuario.Rows[e.RowIndex].Cells["cargo"].Value.ToString();
+            caminhofoto = dataGridUsuario.Rows[e.RowIndex].Cells["foto"].ToString();
+            pictureBox1.Image = Image.FromFile(caminhofoto);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -83,7 +87,7 @@ namespace projeto
 
                 //chama a classe usuario
                 Class_usuario usu = new Class_usuario();
-                if (usu.alterar(txtEmail.Text, txtSenha.Text, txtNome.Text, codigo, cargo) > 0)
+                if (usu.alterar(txtEmail.Text, txtSenha.Text, txtNome.Text, codigo, cargo,caminhofoto) > 0)
                 {
                     MessageBox.Show("Alterado com sucesso!");
                     dataGridUsuario.DataSource = com.obterdados("select * from usuario");
@@ -124,12 +128,19 @@ namespace projeto
         {
             try
             {
+                //abre a caixa de dialogo para escolher a foto
                 OpenFileDialog foto= new OpenFileDialog();
+                //filtro de arquivos
                 foto.Filter = "Image file(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
+               //se escolher a foto ok 
                 if (foto.ShowDialog() == DialogResult.OK)
                 {
+                    //caminho do arquivo
                     Image arquivo=Image.FromFile(foto.FileName);
+                    caminhofoto = foto.FileName.Replace("\\", "\\\\");//nome e caminho da foto
+                    //adiciona a imagem na picture
                     pictureBox1.Image= arquivo;
+                    //ajusto a imagem ao quadro definido
                     pictureBox1.SizeMode=PictureBoxSizeMode.StretchImage;
                 }
                 else

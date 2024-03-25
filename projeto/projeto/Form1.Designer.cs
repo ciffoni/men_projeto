@@ -60,7 +60,7 @@
             // 
             // btnCadastrar
             // 
-            btnCadastrar.Location = new Point(212, 432);
+            btnCadastrar.Location = new Point(201, 423);
             btnCadastrar.Margin = new Padding(3, 4, 3, 4);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(86, 31);
