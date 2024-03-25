@@ -21,3 +21,16 @@ insert into cargo(cargo) values("administrador"),
 ("gerente"),
 ("técnico"),
 ("vendedor");
+create table fornecedor(
+cod_forn int primary key auto_increment,
+nome varchar(70)
+);
+create table produto(
+cod_prod int primary key auto_increment,
+nome varchar(70),
+quantidade int,
+preco decimal(5,2),
+foto varchar(120),
+cod_fornecedor int,
+constraint fk_forn foreign key(cod_fornecedor) references fornecedor(cod_forn)
+);
