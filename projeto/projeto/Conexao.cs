@@ -24,6 +24,29 @@ namespace projeto
             conn= new MySqlConnection(StrConn);
             return conn;
         }
+        public int cadastro(string sql, string[] campos, object[] valores)
+        {
+            int registro = 0;
+            try
+            {
+
+
+                conn = getConexao();
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                for (int i = 0; i < valores.Length; i++)
+                {
+                    cmd.Parameters.AddWithValue(campos[i], valores[i]);
+                }
+                registro = cmd.ExecuteNonQuery();
+                conn.Close();
+                return registro;
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public int cadastrar(string nome,string email,string senha,int cargo,string foto)
         {
             int cadastro = 0;
@@ -61,4 +84,5 @@ namespace projeto
             return dt;//devolve a tabela
         }
     }
+
 }
