@@ -98,3 +98,4 @@ C:\Users\Aluno\Source\Repos\men_projeto\projeto\projeto\obj\Debug\net8.0-windows
 C:\Users\Aluno\Source\Repos\men_projeto\projeto\projeto\obj\Debug\net8.0-windows\ref\projeto.dll
 C:\Users\Aluno\Documents\GitHub\men_projeto\projeto\projeto\obj\Debug\net8.0-windows\projeto.csproj.Up2Date
 C:\Users\Aluno\Documents\GitHub\men_projeto\projeto\projeto\obj\Debug\net8.0-windows\projeto.Properties.Resources.resources
+C:\Users\Aluno\Documents\GitHub\men_projeto\projeto\projeto\obj\Debug\net8.0-windows\projeto.FrmProdutocs.resources

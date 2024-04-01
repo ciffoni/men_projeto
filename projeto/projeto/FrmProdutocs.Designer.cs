@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            btnCadastrr = new Button();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -43,14 +43,15 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // btnCadastrr
             // 
-            button1.Location = new Point(85, 350);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnCadastrr.Location = new Point(85, 350);
+            btnCadastrr.Name = "btnCadastrr";
+            btnCadastrr.Size = new Size(94, 29);
+            btnCadastrr.TabIndex = 0;
+            btnCadastrr.Text = "Cadastrar";
+            btnCadastrr.UseVisualStyleBackColor = true;
+            btnCadastrr.Click += btnCadastrr_Click;
             // 
             // label1
             // 
@@ -123,6 +124,7 @@
             pictureBox1.Size = new Size(125, 62);
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // button2
             // 
@@ -158,7 +160,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(btnCadastrr);
             Name = "FrmProdutocs";
             Text = "FrmProdutocs";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -168,7 +170,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button btnCadastrr;
         private Label label1;
         private Label label2;
         private Label label3;

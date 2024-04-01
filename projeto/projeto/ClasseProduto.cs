@@ -9,11 +9,11 @@ namespace projeto
     public class ClasseProduto
     {
         int codigo;
-        string nome;
-        decimal preco;
-        int quantidade;
-        string foto;
-        int fornecedor;
+       public string nome;
+       public decimal preco;
+       public int quantidade;
+       public string foto;
+       public int fornecedor;
         //construtor da classe produto
     public ClasseProduto()
         {
@@ -29,10 +29,18 @@ namespace projeto
         public int cadastrar(ClasseProduto produto)
         {
             int registro = 0;
-            string sql = "insert into produto(nome,quantidade,preco,foto,cod_fornecedor)values(@nome,@qunatidade,@preco,@foto,@fornecedor)";
+            string sql = "insert into produto(nome,quantidade,preco,foto,cod_fornecedor)values(@nome,@quantidade,@preco,@foto,@fornecedor)";
             string[] campos = { "@nome", "@quantidade", "@preco", "@foto", "@fornecedor" };
             Object[] valores = { produto.nome, produto.quantidade, produto.preco, produto.foto, produto.fornecedor };
-
+            Conexao com = new Conexao();
+            if(com.cadastro(sql,campos, valores) >= 1)
+            {
+                MessageBox.Show("Cadastro com sucesso");
+            }
+            else
+            {
+                MessageBox.Show("ERro ao cadastrar!");
+            }
             return registro;
         }
     }
