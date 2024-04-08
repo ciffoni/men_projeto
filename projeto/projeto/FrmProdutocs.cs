@@ -54,12 +54,17 @@ namespace projeto
             //populo as variaveis
             produto.foto = caminhofoto;
             produto.nome = textBox1.Text;
-            produto.preco=Convert.ToDecimal(textBox2.Text);
+            produto.preco = Convert.ToDecimal(textBox2.Text);
             produto.fornecedor = Convert.ToInt32(textBox4.Text);
             produto.quantidade = Convert.ToInt32(textBox3.Text);
             //chama o metodo 
             produto.cadastrar(produto);
-            
+
+        }
+
+        private void FrmProdutocs_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

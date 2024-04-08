@@ -163,6 +163,7 @@
             Controls.Add(btnCadastrr);
             Name = "FrmProdutocs";
             Text = "FrmProdutocs";
+            Load += FrmProdutocs_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
