@@ -1,5 +1,14 @@
 create database projeto;
 use projeto;
+
+create table cargo(
+cod_cargo int auto_increment primary key,
+cargo varchar(50)
+);
+insert into cargo(cargo) values("administrador"),
+("gerente"),
+("técnico"),
+("vendedor");
 CREATE TABLE `usuario` (
   `cod_usu` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(70) DEFAULT NULL,
@@ -13,14 +22,6 @@ CREATE TABLE `usuario` (
 
 insert into usuario(nome,email,senha) values("jorge","ciffoni@gmail.com","aula123",1);
 
-create table cargo(
-cod_cargo int auto_increment primary key,
-cargo varchar(50)
-);
-insert into cargo(cargo) values("administrador"),
-("gerente"),
-("técnico"),
-("vendedor");
 create table fornecedor(
 cod_forn int primary key auto_increment,
 nome varchar(70)
